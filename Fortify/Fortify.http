@@ -1,0 +1,6 @@
+@Fortify_HostAddress = http://localhost:5169
+
+GET {{Fortify_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
