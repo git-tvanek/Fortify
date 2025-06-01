@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Fortify.Domain.Entities;
 using Fortify.Domain.Enums;
 using System.Linq.Expressions;
 
