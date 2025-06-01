@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Fortify.Domain.Entities;
 
 namespace Fortify.Domain.Specifications;
 

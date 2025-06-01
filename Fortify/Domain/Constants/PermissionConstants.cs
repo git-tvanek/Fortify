@@ -1,48 +1,28 @@
-﻿using Fortify.Domain.Specification;
-using System.Linq.Expressions;
+﻿namespace Fortify.Domain.Constants;
 
-namespace Fortify.Domain.Constants;
-
-public abstract class SpecificationBase<T> : ISpecification<T>
+public static class PermissionConstants
 {
-    protected SpecificationBase(Expression<Func<T, bool>> criteria)
-    {
-        Criteria = criteria;
-    }
+    public const string UserView = "Users.View";
+    public const string UserCreate = "Users.Create";
+    public const string UserEdit = "Users.Edit";
+    public const string UserDelete = "Users.Delete";
+    public const string UserBlock = "Users.Block";
+    public const string UserUnblock = "Users.Unblock";
+    public const string UserManageRoles = "Users.ManageRoles";
 
-    public Expression<Func<T, bool>> Criteria { get; }
-    public List<Expression<Func<T, object>>> Includes { get; } = [];
-    public List<string> IncludeStrings { get; } = [];
-    public Expression<Func<T, object>>? OrderBy { get; private set; }
-    public Expression<Func<T, object>>? OrderByDescending { get; private set; }
-    public int Take { get; private set; }
-    public int Skip { get; private set; }
-    public bool IsPagingEnabled { get; private set; }
+    public const string RoleView = "Roles.View";
+    public const string RoleCreate = "Roles.Create";
+    public const string RoleEdit = "Roles.Edit";
+    public const string RoleDelete = "Roles.Delete";
+    public const string RoleManagePermissions = "Roles.ManagePermissions";
 
-    protected virtual void AddInclude(Expression<Func<T, object>> includeExpression)
-    {
-        Includes.Add(includeExpression);
-    }
+    public const string PermissionView = "Permissions.View";
+    public const string PermissionCreate = "Permissions.Create";
+    public const string PermissionEdit = "Permissions.Edit";
+    public const string PermissionDelete = "Permissions.Delete";
 
-    protected virtual void AddInclude(string includeString)
-    {
-        IncludeStrings.Add(includeString);
-    }
-
-    protected virtual void ApplyPaging(int skip, int take)
-    {
-        Skip = skip;
-        Take = take;
-        IsPagingEnabled = true;
-    }
-
-    protected virtual void ApplyOrderBy(Expression<Func<T, object>> orderByExpression)
-    {
-        OrderBy = orderByExpression;
-    }
-
-    protected virtual void ApplyOrderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
-    {
-        OrderByDescending = orderByDescendingExpression;
-    }
+    public const string SystemAdministration = "System.Administration";
+    public const string SystemConfiguration = "System.Configuration";
+    public const string SystemLogs = "System.Logs";
+    public const string SystemAudit = "System.Audit";
 }

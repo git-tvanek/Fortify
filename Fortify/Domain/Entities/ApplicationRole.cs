@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Fortify.Domain.Common;
 using Fortify.Domain.Events;
 using Microsoft.AspNetCore.Identity;
 using System.Security;
@@ -32,3 +33,4 @@ public class ApplicationRole : IdentityRole, IHasDomainEvents
     {
         _domainEvents.Clear();
     }
+}
