@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Fortify.Domain.Specification;
+namespace Fortify.Domain.Specifications;
 
 public interface ISpecification<T>
 {

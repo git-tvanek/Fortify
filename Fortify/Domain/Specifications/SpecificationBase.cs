@@ -1,5 +1,4 @@
-﻿using Fortify.Domain.Specification;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace Fortify.Domain.Specifications;
 

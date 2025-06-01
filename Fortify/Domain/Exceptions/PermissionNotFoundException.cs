@@ -2,8 +2,8 @@
 
 public class PermissionNotFoundException : DomainException
 {
-    public Guid? PermissionId { get; }
-    public string? PermissionName { get; }
+    public Guid? PermissionId { get; private set; }
+    public string? PermissionName { get; private set; }
 
     public PermissionNotFoundException(Guid permissionId)
         : base($"Permission with ID '{permissionId}' was not found.")

@@ -2,8 +2,8 @@
 
 public class RoleNotFoundException : DomainException
 {
-    public string? RoleId { get; }
-    public string? RoleName { get; }
+    public string? RoleId { get; private set; }
+    public string? RoleName { get; private set; }
 
     public RoleNotFoundException(string roleId)
         : base($"Role with ID '{roleId}' was not found.")

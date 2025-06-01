@@ -1,10 +1,13 @@
 ﻿using System.Text.RegularExpressions;
+using Fortify.Domain.Constants;
 
 namespace Fortify.Domain.ValueObjects;
 
 public readonly record struct Username
 {
-    private static readonly Regex UsernameRegex = new(@"^[a-zA-Z0-9_-]{3,20}$", RegexOptions.Compiled);
+    private static readonly Regex UsernameRegex = new(
+        $@"^[a-zA-Z0-9_-]{{{DefaultValues.MinUsernameLength},{DefaultValues.MaxUsernameLength}}}$",
+        RegexOptions.Compiled);
 
     public string Value { get; }
 
@@ -13,7 +16,9 @@ public readonly record struct Username
         ArgumentException.ThrowIfNullOrWhiteSpace(value, nameof(value));
 
         if (!UsernameRegex.IsMatch(value))
-            throw new ArgumentException("Username must be 3-20 characters long and contain only letters, numbers, underscores, and hyphens", nameof(value));
+            throw new ArgumentException(
+                $"Username must be {DefaultValues.MinUsernameLength}-{DefaultValues.MaxUsernameLength} characters long and contain only letters, numbers, underscores, and hyphens",
+                nameof(value));
 
         Value = value;
     }
